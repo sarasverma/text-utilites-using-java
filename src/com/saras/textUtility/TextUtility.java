@@ -60,7 +60,6 @@ class mainFrame extends JFrame implements ActionListener{
         // All buttons container
         JPanel allButtonContainer = new JPanel();
 
-
         // Button Utility container
         JPanel buttonUtilityContainer = new JPanel();
         lowerCaseButton = new JButton("Lower");
@@ -72,9 +71,6 @@ class mainFrame extends JFrame implements ActionListener{
         removeSpaceButtton = new JButton("Remove Spaces");
         textRecognitionButton = new JButton("Text Recognition");
         translateButton = new JButton("Translate");
-        
-        buttonUtilityContainer.setLayout(new BoxLayout(buttonUtilityContainer, BoxLayout.PAGE_AXIS));
-        
         // adding functionalities to buttonUtilityContainer
         lowerCaseButton.addActionListener(this);
         upperCaseButton.addActionListener(this);
@@ -84,8 +80,7 @@ class mainFrame extends JFrame implements ActionListener{
         prependButton.addActionListener(this);
         removeSpaceButtton.addActionListener(this);
         textRecognitionButton.addActionListener(this);
-        translateButton.addActionListener(this);
-        
+        translateButton.addActionListener(this); 
         // adding elements to buttonUtilityContainer
         buttonUtilityContainer.add(lowerCaseButton);
         buttonUtilityContainer.add(upperCaseButton);
@@ -96,31 +91,29 @@ class mainFrame extends JFrame implements ActionListener{
         buttonUtilityContainer.add(removeSpaceButtton);
         buttonUtilityContainer.add(textRecognitionButton);
         buttonUtilityContainer.add(translateButton);
-
+        buttonUtilityContainer.setLayout(new GridLayout(9, 1, 0, 5));
         
         // Button basic container
         JPanel buttonBasicContainer = new JPanel();
         copyButton = new JButton("Copy");
-        clearButton = new JButton("Clear");
         readButton = new JButton("Read");
-        
-        
+        clearButton = new JButton("Clear");
         // adding functionalities to buttonBasicContainer
         copyButton.addActionListener(this);
-        clearButton.addActionListener(this);
         readButton.addActionListener(this);
-        
+        clearButton.addActionListener(this);
         // adding elements to buttonBasicContainer
         buttonBasicContainer.add(copyButton);
-        buttonBasicContainer.add(clearButton);
         buttonBasicContainer.add(readButton);
-
+        buttonBasicContainer.add(clearButton);
+        buttonBasicContainer.setLayout(new GridLayout(3, 1, 0, 5));
         
-
+   
         // adding all buttons section to button container
         allButtonContainer.setLayout(new BorderLayout());
         allButtonContainer.add(buttonUtilityContainer, BorderLayout.NORTH);
         allButtonContainer.add(buttonBasicContainer, BorderLayout.SOUTH);
+        allButtonContainer.setBackground(new Color(0.964f, 0.968f, 0.964f, 1f));
 
 
         // Adding all container to frame
@@ -134,13 +127,18 @@ class mainFrame extends JFrame implements ActionListener{
         setSize(1200, 600);
         setTitle("Text utility");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setUndecorated(true);
+        //setBackground(new Color(0.125f, 0.890f, 0.972f, .9f));
         setVisible(true);
+        
     }
 
     
     // implementing functionalities
     public void actionPerformed(ActionEvent event) {
         String action = event.getActionCommand();
+        
+        // basic button implementations
         if (action.equals("Clear")) {
             textPane.setText("");
         }
@@ -153,6 +151,7 @@ class mainFrame extends JFrame implements ActionListener{
         else if (action.equals("Read")) {
             speak();
         }
+        // utility button implementation
         else if (action.equals("Lower")) {
             String text = textPane.getText();
             textPane.setText(text.toLowerCase());
@@ -228,9 +227,11 @@ class mainFrame extends JFrame implements ActionListener{
         else if(action.equals("Translate")) {
         	translate();
         }
-        // shuffle (character, line)
-        // grammar (shayad)
-
+        // take screenshot of a thing and do stuff
+        // replace and other stuff
+        // import and export file
+        // probably make editor transparent
+        // editor pane ke upar kuch
     }
     
     private void speak(){
