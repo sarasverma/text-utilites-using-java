@@ -1,35 +1,23 @@
 package com.saras.textUtility;
 
-// Modules for GUI related stuff
+// GUI related stuff
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.datatransfer.Clipboard; // for copying text
-import java.awt.datatransfer.StringSelection;
-// Modules for text-to-speech(Freetts)
+import java.awt.event.*;
+import java.awt.datatransfer.*; // for copying text
+// text-to-speech (Freetts)
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
-// Modules for file handling
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-
-// Modules for textRecognition
+// file handling
+import java.io.*;
+// textRecognition
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
-// Modules for request API
+// request API
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.io.BufferedInputStream; // for buffered I/O
-import java.io.InputStream;
-import java.io.OutputStream;
 import org.apache.commons.io.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;  // for json
-import org.json.JSONTokener;
+import org.json.*;	// for json 
 
 
 // Main class
@@ -431,6 +419,7 @@ class mainFrame extends JFrame implements ActionListener{
     	String themeOptions[] = {"Light Blue", "Light Pink", "Light Green", "Dark Blue", "Dark Red", "Dark Green"};
     	String theme = (String) JOptionPane.showInputDialog(this, "Choose Theme ", "Theme Selection", JOptionPane.QUESTION_MESSAGE,
     			null, themeOptions, "Light");
+    	
     	if(theme == null) {return;}
     	else if(theme.equals("Light Blue")){	
     		bgContainerColor = new Color(239, 255, 253);
@@ -485,41 +474,15 @@ class mainFrame extends JFrame implements ActionListener{
 		buttonBasicContainer.setBackground(bgContainerColor);
 		
 		// Buttons
-		lowerCaseButton.setBackground(bgButtonColor);
-		upperCaseButton.setBackground(bgButtonColor);
-		capitalizeButton.setBackground(bgButtonColor);
-		sequenceButton.setBackground(bgButtonColor);
-		appendButton.setBackground(bgButtonColor);
-		prependButton.setBackground(bgButtonColor);
-		removeSpaceButtton.setBackground(bgButtonColor);
-		textRecognitionButton.setBackground(bgButtonColor);
-		translateButton.setBackground(bgButtonColor);
-		themeButton.setBackground(bgButtonColor);
-		copyButton.setBackground(bgButtonColor);
-		clearButton.setBackground(bgButtonColor);
-		readButton.setBackground(bgButtonColor);
-		replaceButton.setBackground(bgButtonColor);
-		replaceButton.setBackground(bgButtonColor);
-		importButton.setBackground(bgButtonColor);
-		exportButton.setBackground(bgButtonColor);
-		
-		// setting foreground of buttons
-		lowerCaseButton.setForeground(fgButtonColor);
-		upperCaseButton.setForeground(fgButtonColor);
-		capitalizeButton.setForeground(fgButtonColor);
-		sequenceButton.setForeground(fgButtonColor);
-		appendButton.setForeground(fgButtonColor);
-		prependButton.setForeground(fgButtonColor);
-		removeSpaceButtton.setForeground(fgButtonColor);
-		textRecognitionButton.setForeground(fgButtonColor);
-		translateButton.setForeground(fgButtonColor);
-		themeButton.setForeground(fgButtonColor);
-		copyButton.setForeground(fgButtonColor);
-		clearButton.setForeground(fgButtonColor);
-		readButton.setForeground(fgButtonColor);
-		replaceButton.setForeground(fgButtonColor);
-		importButton.setForeground(fgButtonColor);
-		exportButton.setForeground(fgButtonColor);
-
+		Component buttonUtilityContainerComps[] = buttonUtilityContainer.getComponents();
+		for(Component c: buttonUtilityContainerComps) {
+			c.setBackground(bgButtonColor);
+			c.setForeground(fgButtonColor);
+		}
+		Component buttonBasicContainerComps[] = buttonBasicContainer.getComponents();
+		for(Component c: buttonBasicContainerComps) {
+			c.setBackground(bgButtonColor);
+			c.setForeground(fgButtonColor);
+		}
     }
 }
